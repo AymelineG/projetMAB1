@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "projetMAB1"
+  site-url: "https://AymelineG.github.io/projetMAB1"
+  description: "projet master 1"
+  repo-branch: main
+  repo-url: "https://github.com/AymelineG/projetMAB1"
