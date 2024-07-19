@@ -1,0 +1,18 @@
+website:
+  sidebar:
+    contents:
+      - index.ipynb
+      - section: Tests
+        contents:
+          - tests/assembling_video.ipynb
+          - tests/data_storage.ipynb
+          - tests/fast_index.ipynb
+          - tests/indexing.ipynb
+          - tests/querying.ipynb
+          - tests/splitting_video.ipynb
+      - section: Modules
+        contents:
+          - modules/indexer.ipynb
+          - modules/interface.ipynb
+          - modules/model.ipynb
+          - modules/storage.ipynb
