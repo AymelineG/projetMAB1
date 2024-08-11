@@ -9,10 +9,9 @@ import torch
 import tempfile
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+from os.path import basename, splitext
 
 from PIL import Image
-from .storage import Storage
 
 # %% ../nbs/modules/model.ipynb 2
 class Model:
@@ -27,7 +26,7 @@ class Model:
     def __init__(self) :
         self._model, self._preprocess = clip.load("ViT-B/32")
         self._model.cpu().eval()
-        self._df = pd.read_pickle("../data/runtime/index.pkl")
+        self._df = pd.read_pickle("../../data/runtime/index.pkl")
 
     def get_image_features(self, images):
         torch_images = [self._preprocess(Image.fromarray(image)) for image in images]
@@ -40,8 +39,7 @@ class Model:
         return image_features
     
     def query(self, text:str, k=3):
-
-        images = [Image.open("../data/runtime/frames/" + file_name) for file_name in self._df["preview_name"]]
+        images = [Image.open("../../data/runtime/frames/" + file_name) for file_name in self._df["preview_name"]]
         images_prep = [self._preprocess(image) for image in images]
         image_input = torch.tensor(np.stack(images_prep)).cpu()
         text_tokens = clip.tokenize(["This is " + desc for desc in [text]]).cpu()
@@ -60,6 +58,6 @@ class Model:
         matches = []
         
         for i, preview_name in zip(indices, preview_names):
-            matches.append(("../data/runtime/frames/" + preview_name, similarity[0][i]))
+            matches.append(("../../data/runtime/fragments/" + splitext(basename(preview_name))[0] + ".mp4", similarity[0][i]))
 
         return matches

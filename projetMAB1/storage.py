@@ -12,9 +12,9 @@ class Storage:
 
     @classmethod
     def load(cls):
-        path = Path('../data/runtime/index.pkl')
+        path = Path('../../data/runtime/index.pkl')
 
         if path.exists():
-            return pd.read_pickle('../data/runtime/index.pkl')
+            return pd.read_pickle('../../data/runtime/index.pkl')
         
         raise FileNotFoundError("No index.pkl found in runtime folder")

@@ -6,3 +6,4 @@ tqdm
 ffmpeg-python
 torch
 nbdev
+pandas
