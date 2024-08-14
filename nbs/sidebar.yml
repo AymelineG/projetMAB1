@@ -16,3 +16,4 @@ website:
           - modules/interface.ipynb
           - modules/model.ipynb
           - modules/storage.ipynb
+          - modules/assembler.ipynb
